@@ -39,15 +39,70 @@
     <!-- JavaScript code for adding and manipulating tasks -->
     <script>
         // Function to add a task to the list
-        
+        function enter() {
+  // Cache frequently used DOM elements
+  const userInput = document.getElementById("userinput");
+  const list = document.getElementById("list");
 
+  // Get the text input by the user
+  const input = userInput.value;
 
+  // Create a new list item
+  const listItem = createListItem(input);
 
+  // Add the list item to the list
+  list.appendChild(listItem);
 
+  // Clear the text input field
+  userInput.value = "";
+}
 
-    // function done(done) {
-    //     done.style.background.color = blue;
-    // }
+function createListItem(text) {
+  // Create a new list item
+  const listItem = document.createElement("li");
+  listItem.innerText = text;
+  listItem.id = "li";
+  listItem.contentEditable = true;
+  // Prevent the user from adding a new line when editing the list item
+  listItem.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      e.target.blur();
+    }
+  });
+
+  // Create a delete button for the list item
+  const deleteButton = createButton("delete");
+  deleteButton.addEventListener("click", deleteListItem);
+
+  // Create a done button for the list item
+  const doneButton = createButton("done");
+  doneButton.addEventListener("click", markAsDone);
+
+  // Add the delete and done buttons to the list item
+  listItem.appendChild(deleteButton);
+  listItem.appendChild(doneButton);
+
+  return listItem;
+}
+
+function createButton(text) {
+  // Create a new button with the given text
+  const button = document.createElement("button");
+  button.textContent = text;
+  button.id = text;
+  return button;
+}
+
+function deleteListItem(e) {
+  // Delete the list item when the delete button is clicked
+  e.target.parentElement.remove();
+}
+
+function markAsDone(e) {
+  // Mark the task as done when the done button is clicked
+  e.target.style.backgroundColor = "blue";
+}
 </script>
 
 </html>
