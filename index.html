@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo list</title>
+</head>
+
+<body>
+
+    <div class="parent">
+
+        <ul>
+            <li>
+                <input id="userinput" type="text">
+            </li>
+            <li>
+                <input type="submit" onclick="enter()">
+            </li>
+            <li>
+                <button id="del" onclick="lidel()">
+                        delete
+                    </button>
+            </li>
+        </ul>
+    </div>
+
+    <div id="todo">
+        <main>
+            <ul id="list">
+                <li></li>
+
+            </ul>
+        </main>
+    </div>
+</body>
+<script>
+    function enter() {
+        const input = document.getElementById("userinput").value;
+        var ul = document.getElementById("list");
+        var li = document.createElement("li");
+        li.innerText = input
+        li.id = "li"
+        li.contentEditable = true
+        li.addEventListener('keypress', e => {
+            if (e.key === 'Enter') {
+                e.preventDefault()
+                e.target.blur()
+            }
+        })
+        let btn = document.createElement("button");
+        let bt = document.createElement("button");
+        btn.textContent = 'delete';
+        btn.id = 'delete';
+        btn.addEventListener('click', del)
+        btn.innerText = "delete";
+        bt.textContent = 'done';
+        bt.id = 'done';
+        bt.addEventListener('click', callDone)
+        bt.innerText = "done";
+        ul.appendChild(li);
+        li.appendChild(btn);
+        li.appendChild(bt);
+        ent.addEventListener('click', edit)
+        const firstNameInput = document.getElementById('userinput');
+        firstNameInput.value = '';
+
+        function del(e) {
+            console.log(e.target)
+            e.target.parentElement.remove();
+        }
+
+
+        function callDone(e) {
+            e.target.style.backgroundColor = "blue"
+        }
+
+
+    }
+
+    function lidel(e) {
+        document.getElementById("list").innerHTML = "";
+    }
+
+
+
+
+    // function done(done) {
+    //     done.style.background.color = blue;
+    // }
+</script>
+
+</html>

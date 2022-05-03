@@ -1,0 +1,117 @@
+body {
+    background-color: beige;
+    display: block;
+    justify-content: space-around;
+    transform: translateY(100px);
+}
+
+.parent {
+    justify-content: center;
+    display: flex;
+    padding: 6px;
+}
+
+.parent ul {
+    border-radius: 5px;
+    display: flex;
+    background-color: wheat;
+    border: 2px solid black;
+    padding: 5px;
+}
+
+.parent ul li {
+    display: flex;
+    padding: 10px;
+}
+
+#userinput {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.del button {
+    padding: 5px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#sumbit {
+    padding: 5px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+}
+
+#submit:hover {
+    background-color: aliceblue;
+}
+
+#submit :active {
+    padding: 2px;
+}
+
+.todo {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    background-color: brown;
+}
+
+#list {
+    justify-content: center;
+    list-style: none;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: azure;
+    display: flex;
+    margin: auto;
+    min-width: 40%;
+    max-width: 70%;
+    word-break: break-all;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding-right: 0px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    padding-inline-start: 0px;
+}
+
+#list li {
+    position: relative;
+    overflow-wrap: break-word;
+    justify-content: center;
+    display: flex;
+    background-color: aquamarine;
+    padding-right: 70px;
+    align-items: center;
+}
+
+#delete {
+    display: flex;
+    margin-left: 20px;
+    background-color: blanchedalmond;
+    position: absolute;
+    right: 0;
+    width: 4%;
+    height: 100%;
+    padding: 0%;
+    border: black 2px solid;
+    align-items: center;
+}
+
+#done {
+    width: 4%;
+    height: 100%;
+    appearance: auto;
+    display: flex;
+    background-color: blanchedalmond;
+    position: absolute;
+    right: 0;
+    transform: translateX(-120px);
+    border: black 2px solid;
+}
