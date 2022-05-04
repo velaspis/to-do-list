@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
@@ -8,82 +7,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>todo list</title>
 </head>
-
 <body>
-
+    <!-- Parent container for the to-do list -->
     <div class="parent">
-
         <ul>
+            <!-- Text input for the user to add tasks -->
             <li>
                 <input id="userinput" type="text">
             </li>
+            <!-- Submit button to add the task to the list -->
             <li>
                 <input type="submit" onclick="enter()">
             </li>
+            <!-- Button to clear the list -->
             <li>
-                <button id="del" onclick="lidel()">
-                        delete
-                    </button>
+                <button id="del" onclick="lidel()">delete</button>
             </li>
         </ul>
     </div>
 
+    <!-- Container for the to-do list -->
     <div id="todo">
         <main>
             <ul id="list">
+                <!-- List items will be added dynamically through JavaScript -->
                 <li></li>
-
             </ul>
         </main>
     </div>
-</body>
-<script>
-    function enter() {
-        const input = document.getElementById("userinput").value;
-        var ul = document.getElementById("list");
-        var li = document.createElement("li");
-        li.innerText = input
-        li.id = "li"
-        li.contentEditable = true
-        li.addEventListener('keypress', e => {
-            if (e.key === 'Enter') {
-                e.preventDefault()
-                e.target.blur()
+
+    <!-- JavaScript code for adding and manipulating tasks -->
+    <script>
+        // Function to add a task to the list
+        function enter() {
+            // Get the text input by the user
+            const input = document.getElementById("userinput").value;
+            // Get the list element
+            var ul = document.getElementById("list");
+            // Create a new list item
+            var li = document.createElement("li");
+            // Set the inner text of the list item to the user's input
+            li.innerText = input
+            // Add an ID to the list item for later manipulation
+            li.id = "li"
+            // Allow the list item to be edited
+            li.contentEditable = true
+            // Prevent the user from adding a new line when editing the list item
+            li.addEventListener('keypress', e => {
+                if (e.key === 'Enter') {
+                    e.preventDefault()
+                    e.target.blur()
+                }
+            })
+            // Create a delete button for the list item
+            let btn = document.createElement("button");
+            btn.textContent = 'delete';
+            btn.id = 'delete';
+            // Add a click event listener to the delete button
+            btn.addEventListener('click', del)
+            // Create a done button for the list item
+            let bt = document.createElement("button");
+            bt.textContent = 'done';
+            bt.id = 'done';
+            // Add a click event listener to the done button
+            bt.addEventListener('click', callDone)
+            // Add the list item, delete button, and done button to the list
+            ul.appendChild(li);
+            li.appendChild(btn);
+            li.appendChild(bt);
+            // Add an event listener to the list item for editing
+            ent.addEventListener('click', edit)
+            // Clear the text input field
+            const firstNameInput = document.getElementById('userinput');
+            firstNameInput.value = '';
+
+            // Function to delete the list item when the delete button is clicked
+            function del(e) {
+                console.log(e.target)
+                e.target.parentElement.remove();
             }
-        })
-        let btn = document.createElement("button");
-        let bt = document.createElement("button");
-        btn.textContent = 'delete';
-        btn.id = 'delete';
-        btn.addEventListener('click', del)
-        btn.innerText = "delete";
-        bt.textContent = 'done';
-        bt.id = 'done';
-        bt.addEventListener('click', callDone)
-        bt.innerText = "done";
-        ul.appendChild(li);
-        li.appendChild(btn);
-        li.appendChild(bt);
-        ent.addEventListener('click', edit)
-        const firstNameInput = document.getElementById('userinput');
-        firstNameInput.value = '';
 
-        function del(e) {
-            console.log(e.target)
-            e.target.parentElement.remove();
+            // Function to mark the task as done when the done button is clicked
+            function callDone(e) {
+                e.target.style.backgroundColor = "blue"
+            }
         }
 
-
-        function callDone(e) {
-            e.target.style.backgroundColor = "blue"
+        // Function to clear the entire list when the delete button is clicked
+        function lidel(e) {
+            document.getElementById("list").innerHTML = "";
         }
 
-
-    }
-
-    function lidel(e) {
-        document.getElementById("list").innerHTML = "";
-    }
 
 
 
