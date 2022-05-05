@@ -75,19 +75,19 @@
             ul.appendChild(li);
             li.appendChild(btn);
             li.appendChild(bt);
-            // Add an event listener to the list item for editing
+            // Add an event listener to the list item for editing,
             ent.addEventListener('click', edit)
             // Clear the text input field
             const firstNameInput = document.getElementById('userinput');
             firstNameInput.value = '';
 
-            // Function to delete the list item when the delete button is clicked
+            // Function to delete the list item when the delete button is clicked,
             function del(e) {
                 console.log(e.target)
                 e.target.parentElement.remove();
             }
 
-            // Function to mark the task as done when the done button is clicked
+            // Function to mark the task as done when the done button is clicked,
             function callDone(e) {
                 e.target.style.backgroundColor = "blue"
             }
